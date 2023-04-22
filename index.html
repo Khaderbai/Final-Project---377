@@ -3,30 +3,38 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tobie Collins' Lab 5</title>
+    <title>Which Diction?</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="wrapper">
       <header class="header">
         <h1>Which Diction?</h1>
+        <h2>Enter a Music Artist's Name and Learn their Most Commonly Used Words!</h2>
       </header>
-
+      
       <div class="container">
 
         <div class="left_section box">
-            <h3>Enter a Music Artist's Name and Learn their Most Commonly Used Words!</h3>
+            
             <form
                 action="https://api.lyrics.ovh/v1/:artist/:title"
                 class = "box main_form"
             >
                 <div>
-                    <label for="artist">Artist Name</label>
+                    <label for="artist"><b>Artist Name</b></label>
                     <input type="text" id="artist" name="artist" />
                 </div>
-                <button type="submit">Load Artist Lyric Data</button>
-                <button type="button" class = "filter_button">Filter Lyrics by Artist</button>
+                <button type="submit">Load Lyrics</button>
+                <button type="button" class = "filter_button">Generate List</button>
             </form>
+        </div>
+        <div class = "middle_section box">
+          <ol>
+
+          </ol>
+
+
         </div>
         <div class="right_section box">
 
@@ -40,12 +48,12 @@
         
     
         <footer class="footer box">
-            Khaderbai: 
+            A website by Tobie Collins: 
             <a href=https://github.com/Khaderbai/Final-Project---377 target="_blank"
             rel="noopener noreferrer">Link to repository</a>
         </footer>
     </div>
-    <script src="./script.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
 
