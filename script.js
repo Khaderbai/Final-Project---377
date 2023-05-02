@@ -15,10 +15,10 @@ function getRandomIntInclusive(min, max) {
   /* Empty innerHTML and then add the name as the target.
   */
     console.log('fired injectHTML')
-    const target = document.querySelector('#restaurant_list');
+    const target = document.querySelector('#artist_list');
     target.innerHTML = ' ';
     list.forEach((item) => {
-      const str = `<li>${item.name}</li>`;
+      const str = `<li>${item.song}</li>`;
       target.innerHTML += str
     })
   }
