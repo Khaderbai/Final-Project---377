@@ -63,7 +63,7 @@ function getRandomIntInclusive(min, max) {
       loadAnimation.style.display = 'inline-block';
   
       // Basic GET request - this replaces the form Action
-      const results = await fetch("api.genius.com/songs");
+      const results = await fetch("https://api.genius.com/search");
   
       // This changes the response from the GET into data we can use - an "object"
       currentList = await results.json();
