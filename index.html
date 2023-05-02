@@ -18,15 +18,15 @@
         <div class="left_section box">
             
             <form
-                action="https://api.lyrics.ovh/v1/:artist/:title"
+                action="lyricsgenius.API"
                 class = "box main_form"
             >
                 <div>
-                    <label for="artist"><b>Artist Name</b></label>
-                    <input type="text" id="artist" name="artist" />
+                    <label for="list_selector"><b>Artist Name</b></label>
+                    <input type="text" id="list_selector" name="list_selector" />
                 </div>
-                <button type="submit">Load Lyrics</button>
-                <button type="button" class = "filter_button">Generate List</button>
+                <button class = "primary" id = "data_load">Load Lyrics</button>
+                <button class = "secondary" id = "generate">Generate List</button>
             </form>
         </div>
         <div class = "middle_section box">
@@ -38,11 +38,11 @@
         </div>
         <div class="right_section box">
 
-        <h3>Most Commonly Used Words in Music by:</h3>
+          <h3>Most Commonly Used Words in Music by:</h3>
 
-        <div class="box" id = "restaurant_list">
+          <div class="box" id = "words_list">
             A list of most common words used in music by artist
-        </div>
+          </div>
         </div>
       </div>
         

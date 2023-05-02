@@ -44,11 +44,12 @@ function getRandomIntInclusive(min, max) {
   
   
   async function mainEvent() { // the async keyword means we can make API requests
-    const mainForm = document.querySelector('.main_form'); // This class name needs to be set on your form before you can listen for an event on it
+    
     const filterButton = document.querySelector('#filter');
     const loadDataButton = document.querySelector('#data_load');
     const generateListButton = document.querySelector('#generate');
-  
+    const textField = document.querySelector("#list_selector");
+
     const loadAnimation = document.querySelector('#data_load_animation');
     loadAnimation.style.display = 'none';
     // Add a querySelector that targets your filter button here
@@ -62,7 +63,7 @@ function getRandomIntInclusive(min, max) {
       loadAnimation.style.display = 'inline-block';
   
       // Basic GET request - this replaces the form Action
-      const results = await fetch();
+      const results = await fetch("api.genius.com/songs");
   
       // This changes the response from the GET into data we can use - an "object"
       currentList = await results.json();
