@@ -32,45 +32,37 @@ function getRandomIntInclusive(min, max) {
     });
   }
   
-  function cutRestaurantList(list) {
-    console.log('fired cut list');
-    const range = [...Array(15).keys()];
-    return newArray = range.map((item) => {
-      const index = getRandomIntInclusive(0, list.length - 1);
-      return list[index]
-    })
-  }
     
   
   
   async function mainEvent() { // the async keyword means we can make API requests
     
-    const filterButton = document.querySelector('#filter');
-    const loadDataButton = document.querySelector('#data_load');
-    const generateListButton = document.querySelector('#generate');
-    const textField = document.querySelector("#list_selector");
+    const form = document.getElementById('form');
+    const search = document.getElementById('search');
+    const results = document.getElementById('results');
+    const textField = document.getElementById("#list_selector");
 
     const loadAnimation = document.querySelector('#data_load_animation');
     loadAnimation.style.display = 'none';
-    // Add a querySelector that targets your filter button here
   
-    let currentList = []; // this is "scoped" to the main event function
+    let trackInfo = []; // Empty array for track's info to populate
     
     /* We need to listen to an "event" to have something happen in our page - here we're listening for a "submit" */
-    loadDataButton.addEventListener('click', async (submitEvent) => { // async has to be declared on every function that needs to "await" something
-      // this is substituting for a "breakpoint" - it prints to the browser to tell us we successfully submitted the form
+    searchButton.addEventListener('click', async (submitEvent) => { // async has to be declared on every function that needs to "await" something
+      
       console.log('loading data');
       loadAnimation.style.display = 'inline-block';
+
+      const artistName = await fetch()
   
-      // Basic GET request - this replaces the form Action
-      const results = await fetch("https://api.genius.com/search");
+      const track = await fetch("https://api.musixmatch.com/ws/1.1/track.search?apikey=71ee4d5a7355024ab28189f5a294df55&format=json&q_track=&q_artist=MF%20DOOM&quorum_factor=1");
   
-      // This changes the response from the GET into data we can use - an "object"
-      currentList = await results.json();
+      trackInfo = await results.json();
   
       loadAnimation.style.display = 'none';
-      console.table(currentList);
+      console.table(trackInfo);
   
+
   
     });
   
