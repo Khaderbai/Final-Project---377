@@ -18,18 +18,22 @@
         <div class="left_section box">
             
             <form
-                action="https://api.genius.com"
-                class = "box main_form"
+                action="https://api.musixmatch.com/ws/1.1/"
+                id = "form"
             >
                 <div>
-                    <label for="list_selector"><b>Artist Name</b></label>
-                    <input type="text" id="list_selector" name="list_selector" />
+                    <label for="artist_name"><b>Artist Name</b></label>
+                    <input type="text" id="artist_name" name="list_selector" />
                 </div>
-                <button class = "primary" id = "data_load">Load Lyrics</button>
-                <button class = "secondary" id = "generate">Generate List</button>
+                <div>
+                  <label for="song_name"><b>Song Name</b></label>
+                  <input type="text" id = "song_name"/>
+                </div>
+                <button class = "primary" id = "search">Search Lyrics</button>
+                <button class = "secondary" id = "filter">Filter</button>
             </form>
         </div>
-        <div class = "middle_section box">
+        <div class = "middle_section box" id = "result">
           <ol>
 
           </ol>
