@@ -15,10 +15,10 @@ function injectHTML(list){
 /* Empty innerHTML and then add the name as the target.
 */
   console.log('fired injectHTML')
-  const target = document.querySelector('#artist_list');
+  const target = document.querySelector('#overflows_list');
   target.innerHTML = ' ';
   list.forEach((item) => {
-    const str = `<li>${item.song}</li>`;
+    const str = `<ol>${item.overflow_type}${item.location}</ol>`;
     target.innerHTML += str
   })
 }
@@ -32,23 +32,44 @@ function filterList(list, query) {
   });
 }
 
-  
+function initMap(){
+  const carto = L.map('map').setView([39.15, -77.24], 13);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(carto);
+return carto;
+}
+
+function markerPlace(array, map){
+  console.log('array for markers', array);
+  array.forEach((item)=> {
+    console.log("marker place", item);
+
+    L.marker(item.latitude, item.longitude).addTo(map);
+  })
+}
 
 
 async function mainEvent() {
   const search = document.getElementById('search');
   console.log('start');
 
+  const carto = initMap();
+
   search.addEventListener('click', async (event) => {
     event.preventDefault();
 
-    const artistNameInput = document.getElementById('artist_name');
-    const artistName = artistNameInput.value;
+    const overflowTypeInput = document.querySelector('#overflow_type');
+    const overflowType = overflowTypeInput.value;
 
-    const songNameInput = document.getElementById('song_name');
-    const songName = songNameInput.value;
+    const latitudeInput = document.querySelector('#latitude');
+    const latitude = latitudeInput;
 
-    const apiUrl = `https://api.lyrics.ovh/v1/${artistName}/${songName}`;
+    const longitudeInput = document.querySelector('#longitude');
+    const longitude = longitudeInput;
+
+    const apiUrl = 'https://opendata.maryland.gov/resource/3rgd-zjxx.json';
     // const apiUrl = `https://api.musixmatch.com/ws/1.1/track.search?apikey=71ee4d5a7355024ab28189f5a294df55&format=json&q_track=${encodeURIComponent(songName)}&q_artist=${encodeURIComponent(artistName)}&quorum_factor=1`;
     console.log("url:",apiUrl );
     try {
@@ -59,7 +80,11 @@ async function mainEvent() {
       }
 
       const data = await response.json();
+      injectHTML(data);
       console.log(data);
+
+      markerPlace(data, carto);
+      
 
       // Process the results and update the UI
       // ...

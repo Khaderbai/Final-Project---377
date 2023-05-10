@@ -3,14 +3,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Which Diction?</title>
+    <title>Sewer Overflows in Maryland</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>
     <link rel="stylesheet" href="style.css" />
+
+    <!-- Leaflet script -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
   </head>
   <body>
     <div class="wrapper">
       <header class="header">
-        <h1>Which Diction?</h1>
-        <h2>Enter a Music Artist's Name and Learn their Most Commonly Used Words!</h2>
+        <h1>Sewer Overflows in Maryland</h1>
+        <h2>Search and filter for sewer overflows in Maryland!</h2>
       </header>
       
       <div class="container">
@@ -19,18 +28,18 @@
             
             <form>
                 <div>
-                    <label for="artist_name"><b>Artist Name</b></label>
-                    <input type="text" id="artist_name" name="list_selector" />
+                    <label for="overflow_type"><b>Overflow Type</b></label>
+                    <input type="text" id="overflow_type" name="type_list" />
                 </div>
                 <div>
-                  <label for="song_name"><b>Song Name</b></label>
-                  <input type="text" id = "song_name"/>
+                  <label for="filter"><b>Filter</b></label>
+                  <input type="text" id = "filter"/>
                 </div>
-                <button class = "primary" id = "search">Search Lyrics</button>
+                <button class = "primary" id = "search">Search Overflow</button>
                 <button class = "secondary" id = "filter">Filter</button>
             </form>
         </div>
-        <div class = "middle_section box" id = "result">
+        <div class = "middle_section box" id = "overflows_list">
           <ol>
 
           </ol>
@@ -39,10 +48,12 @@
         </div>
         <div class="right_section box">
 
-          <h3>Most Commonly Used Words in Music by:</h3>
+          <h3>Map of Sewer Overflows</h3>
 
-        <div class="box" id = "artist_list">
-            A list of most common words used in music by artist
+          <div id="map" class = "box"></div>
+
+        <div class="box" id = "overflows_map">
+            A map of sewer overflows in Maryland
           </div>
         </div>
       </div>
