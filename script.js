@@ -48,7 +48,8 @@ async function mainEvent() {
     const songNameInput = document.getElementById('song_name');
     const songName = songNameInput.value;
 
-    const apiUrl = `https://api.musixmatch.com/ws/1.1/track.search?apikey=71ee4d5a7355024ab28189f5a294df55&format=json&q_track=${encodeURIComponent(songName)}&q_artist=${encodeURIComponent(artistName)}&quorum_factor=1`;
+    const apiUrl = `https://api.lyrics.ovh/v1/${artistName}/${songName}`;
+    // const apiUrl = `https://api.musixmatch.com/ws/1.1/track.search?apikey=71ee4d5a7355024ab28189f5a294df55&format=json&q_track=${encodeURIComponent(songName)}&q_artist=${encodeURIComponent(artistName)}&quorum_factor=1`;
     console.log("url:",apiUrl );
     try {
       const response = await fetch(apiUrl);
