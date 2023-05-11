@@ -104,6 +104,7 @@ filterButton.addEventListener('click', (event) => {
 
   console.log(formProps);
   const newList = filterList(data, formProps.overflowType)
+  injectHTML(newList);
 })
 
 /*
