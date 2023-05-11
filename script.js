@@ -1,9 +1,7 @@
 /*
-  Hook this script to index.html
-  by adding `<script src="script.js">` just before your closing `</body>` tag
+  Programmer: Tobie Collins
+  INST 377 Final Project
 */
-
-/* A quick filter that will return something based on a matching input */
 
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
@@ -15,11 +13,11 @@ function injectHTML(list){
 /* Empty innerHTML and then add the name as the target.
 */
   console.log('fired injectHTML')
-  const target = document.querySelector('#overflows_list');
+  const target = document.getElementById('overflows_list');
   target.innerHTML = ' ';
   list.forEach((item) => {
-    const str = `<ol>${item.overflow_type}${item.location}</ol>`;
-    target.innerHTML += str
+    const str = `<ol>${item.overflow_type}, ${item.location}</ol>`;
+    target.innerHTML += str;
   })
 }
 
@@ -45,12 +43,8 @@ function markerPlace(array, map){
   console.log('array for markers', array);
   array.forEach((item)=> {
     console.log("marker place", item);
-    if(typeof(item.latitude || item.longitude) != "null")
-    {
-      coordinates = [item.latitude, item.longitude];
-    }
-    
-    L.marker(coordinates[0], coordinates[1]).addTo(map);
+
+    L.marker(item.latitude, item.longitude).addTo(map);
   })
 }
 
@@ -58,6 +52,8 @@ function markerPlace(array, map){
 async function mainEvent() {
   const search = document.getElementById('search');
   console.log('start');
+
+  const filterButton = document.getElementById('.filter');
 
   const carto = initMap();
 
@@ -85,7 +81,6 @@ async function mainEvent() {
 
       const data = await response.json();
 
-
       injectHTML(data);
       console.log(data);
 
@@ -100,6 +95,16 @@ async function mainEvent() {
     }
   });
 }
+
+filterButton.addEventListener('click', (event) => {
+  console.log("clicked filter");
+
+  const formData = new FormData(search);
+  const formProps = Object.fromEntries(formData);
+
+  console.log(formProps);
+  const newList = filterList(data, formProps.overflowType)
+})
 
 /*
   This adds an event listener that fires our main event only once our page elements have loaded
