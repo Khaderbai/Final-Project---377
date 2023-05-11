@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sewer Overflows in Maryland</title>
-
+    <!-- Leaflet stylesheet link -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
     crossorigin=""/>
@@ -13,7 +13,9 @@
     <!-- Leaflet script -->
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-    crossorigin=""></script>
+    crossorigin="">
+    </script>
+
   </head>
   <body>
     <div class="wrapper">
@@ -26,17 +28,19 @@
 
         <div class="left_section box">
             
-            <form>
+            <form
+              class = "box main_form"
+              >
+                <button type ="button" class = "data_load_button">Load Data</button>
                 <div>
-                    <label for="overflow_type"><b>Overflow Type</b></label>
-                    <input type="text" id="overflow_type" name="type_list" />
+                    <label for="generate_button"><b>Overflows in Maryland</b></label>
+                    <button type ="button" class = "generate_button">Generate List</button>
                 </div>
                 <div>
                   <label for="filter"><b>Filter</b></label>
-                  <input type="text" id = "filter"/>
+                  <input type="text" id = "filter_text" placeholder = "Type here"/>
                 </div>
-                <button class = "primary" id = "search">Search Overflow</button>
-                <button class = "filter" id = "filter">Filter</button>
+                <button type = "button" class = "filter_button" id = "filter">Filter</button>
             </form>
         </div>
         <ol class = "middle_section box" id = "overflows_list">
