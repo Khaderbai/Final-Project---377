@@ -45,8 +45,12 @@ function markerPlace(array, map){
   console.log('array for markers', array);
   array.forEach((item)=> {
     console.log("marker place", item);
-
-    L.marker(item.latitude, item.longitude).addTo(map);
+    if(typeof(item.latitude || item.longitude) != "null")
+    {
+      coordinates = [item.latitude, item.longitude];
+    }
+    
+    L.marker(coordinates[0], coordinates[1]).addTo(map);
   })
 }
 
@@ -60,13 +64,13 @@ async function mainEvent() {
   search.addEventListener('click', async (event) => {
     event.preventDefault();
 
-    const overflowTypeInput = document.querySelector('#overflow_type');
+    const overflowTypeInput = document.getElementById('overflow_type');
     const overflowType = overflowTypeInput.value;
 
-    const latitudeInput = document.querySelector('#latitude');
+    const latitudeInput = document.getElementById('latitude');
     const latitude = latitudeInput;
 
-    const longitudeInput = document.querySelector('#longitude');
+    const longitudeInput = document.getElementById('longitude');
     const longitude = longitudeInput;
 
     const apiUrl = 'https://opendata.maryland.gov/resource/3rgd-zjxx.json';
@@ -80,6 +84,8 @@ async function mainEvent() {
       }
 
       const data = await response.json();
+
+
       injectHTML(data);
       console.log(data);
 
